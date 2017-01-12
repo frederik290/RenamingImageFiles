@@ -135,7 +135,9 @@ namespace RenamingImageFiles
             foreach (string oldFilePath in filenames)
             {
                 string newFilePath = System.IO.Path.Combine(fileDir, prefixName);
-                File.Move(oldFilePath, newFilePath + count.ToString() + fileExtension);
+                try { 
+                    File.Move(oldFilePath, newFilePath + count.ToString() + fileExtension);
+                } catch (Exception) {}
                 count++;
             }
 
